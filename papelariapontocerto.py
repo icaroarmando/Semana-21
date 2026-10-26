@@ -4,13 +4,14 @@ def mostrar_menu():
     print("\n === PAPELARIA PONTO CERTO ===")
     print("1 - Cadastrar produto")
     print("2 - Consultar produto")
+    print("3 - Listar todos os produtos")
     print("0 - Sair")
 def cadastrar_produto():
     nome = input ("Nome do Produto: ")
     preco = float (input("Informe o Preço do Produto: "))
     if preco <= 0:
         print("Preço Inválido!")
-        #FORA LULA MALDITO; OUTUBRO VIOLETA, TODOS JUNTO CONTRA O CAPETA
+
     else:
         nomes.append(nome)
         precos.append(preco)
@@ -23,6 +24,13 @@ def consultar_produtos():
     else:
         print("Produto não encontrado!")
 opcao = ""
+def listar_produtos():
+    if len(nomes) == 0:
+        print("Nenhum produto cadastrado!")
+    else:
+        for i in range(len(nomes)):
+            print(f"{nomes[i]} - R$ {precos[i]:.2f}")
+
 while opcao != "0":
     mostrar_menu()
     opcao = input("Escolha: ")
@@ -30,7 +38,9 @@ while opcao != "0":
         cadastrar_produto()
     elif opcao == "2":
         consultar_produtos()
+    elif opcao == "3":
+        listar_produtos()
     elif opcao == "0":
-        print ("Encerrando. . .")
+        print("Encerrando. . .")
     else:
         print ("Opção Inválida!")
